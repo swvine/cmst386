@@ -16,12 +16,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
 
   <style>
+    /* Keep the heading above the recipe cards */
+    .quick-recipes-heading {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
     /* Quick Meals Grid */
     .quick-meals-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
     .quick-meal {
       background: #fff;
@@ -76,8 +81,8 @@
       <p>Quick, healthy, and delicious recipes ready in 30 minutes or less — perfect for busy schedules!</p>
     </section>
 
+    <h2 class="quick-recipes-heading">Quick Recipes</h2>
     <section class="quick-meals-grid">
-      <h2>Quick Recipes</h2> <!-- Added heading for accessibility -->
 
       <article class="quick-meal">
         <h3>Garlic Shrimp Stir-Fry</h3>

@@ -23,7 +23,7 @@
   <p>Find recipes, meal plans, or prep tips using our search function.</p>
 
   <!-- Internal Search -->
-  <form id="internal-search" role="search" aria-label="Search our content">
+  <form id="internal-search" role="search" aria-label="Search our content" onsubmit="alert('This search is a demonstration created for a web design course. Search functionality was not part of the original assignment. No search has been performed.'); return false;">
     <label for="internal-search-box" class="sr-only">Search site content</label>
     <div class="search-wrapper">
       <input type="search" id="internal-search-box" name="search" placeholder="Search recipes, planners, tips..." autocomplete="on">
@@ -36,7 +36,7 @@
   <p class="fallback-search">Not finding what you need? Try a wider internet search:</p>
 
   <!-- DuckDuckGo Backup Search Box -->
-  <form method="get" action="https://duckduckgo.com/" target="_blank">
+  <form method="get" action="https://duckduckgo.com/" target="_blank" onsubmit="alert('This search is a demonstration created for a web design course. Search functionality was not part of the original assignment. No search has been performed.'); return false;">
     <label for="ddg-search" class="sr-only">Search DuckDuckGo</label>
     <input type="hidden" name="sites" value="prepandchef.com">
     <input type="text" id="ddg-search" name="q" placeholder="DuckDuckGo Search...">
