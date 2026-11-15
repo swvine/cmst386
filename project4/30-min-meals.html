@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — 30-Minute Meals</title>
+  <meta name="description" content="Quick and easy 30-minute meals for busy schedules, with step-by-step instructions and ingredient lists.">
+  <meta name="keywords" content="30-minute meals, quick recipes, meal prep, easy cooking">
+  <meta name="author" content="Prep & Chef">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon_io/favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <style>
+    /* Quick Meals Grid */
+    .quick-meals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .quick-meal {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .quick-meal:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .quick-meal img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .quick-meal h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .quick-meal p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--charcoal, #2A2A2A);
+    }
+    .quick-meal a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--primary, #5DBB63);
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .quick-meal a:hover,
+    .quick-meal a:focus {
+      background-color: #4ca951;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <section class="hero">
+      <h1>30-Minute Meals</h1>
+      <p>Quick, healthy, and delicious recipes ready in 30 minutes or less — perfect for busy schedules!</p>
+    </section>
+
+    <section class="quick-meals-grid">
+      <h2>Quick Recipes</h2> <!-- Added heading for accessibility -->
+
+      <article class="quick-meal">
+        <h3>Garlic Shrimp Stir-Fry</h3>
+        <img src="imgs/shrimp-stir-fry-featured-new.jpg" alt="Garlic shrimp stir-fry with vegetables" class="recipe-img" loading="lazy">
+        <p>Quick shrimp stir-fry with fresh vegetables and garlic sauce, ready in just 20 minutes.</p>
+        <a href="recipes.html#garlic-shrimp-stir-fry" aria-label="View full recipe for Garlic Shrimp Stir-Fry">Full Recipe</a>
+      </article>
+
+      <article class="quick-meal">
+        <h3>Chicken Fajitas</h3>
+        <img src="imgs/fajitas.jpeg" alt="Chicken fajitas with peppers and tortillas" class="recipe-img" loading="lazy">
+        <p>Colorful chicken fajitas with sautéed peppers and onions, ready in 25 minutes.</p>
+        <a href="recipes.html#chicken-fajitas" aria-label="View full recipe for Chicken Fajitas">Full Recipe</a>
+      </article>
+
+      <article class="quick-meal">
+        <h3>Veggie Pesto Pasta</h3>
+        <img src="imgs/Vegan Pesto Pasta.jpg" alt="Veggie pesto pasta with zucchini and cherry tomatoes" class="recipe-img" loading="lazy">
+        <p>A fresh veggie pasta tossed with pesto sauce, ready in 30 minutes.</p>
+        <a href="recipes.html#veggie-pesto-pasta" aria-label="View full recipe for Veggie Pesto Pasta">Full Recipe</a>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script>
+  <script>
+    // Load header/footer partials
+    ['header', 'footer'].forEach(part => {
+      fetch(`${part}.html`)
+        .then(resp => resp.text())
+        .then(html => document.getElementById(`${part}-placeholder`).innerHTML = html)
+        .then(() => {
+          if(part === 'header') initNavToggle();
+          if(part === 'footer') setFooterDate();
+        });
+    });
+
+    // Mobile Nav Toggle
+    function initNavToggle() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-menu');
+      if(navToggle) {
+        navToggle.addEventListener('click', () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+          navToggle.setAttribute('aria-expanded', !expanded);
+          nav.classList.toggle('nav-open');
+        });
+      }
+    }
+
+    // Footer datetime
+    function setFooterDate() {
+      const datetime = document.getElementById('datetime');
+      if(datetime) datetime.textContent = new Date().toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
+
+

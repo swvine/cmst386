@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Prep & Store Guide</title>
+  <meta name="description" content="Learn how to prep, store, and organize your ingredients safely with Prep & Chef's step-by-step guide.">
+  <meta name="keywords" content="meal prep, ingredient storage, freezer prep, kitchen organization, cooking guide">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Prep & Store Guide</h1>
+        <p>Organize your kitchen and ingredients for stress-free, efficient cooking throughout the week.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ingredient Prep Tips</h2>
+      <p>Chop vegetables, portion proteins, and measure grains in advance to save hours during the week.</p>
+    </section>
+
+    <section>
+      <h2>Storage Best Practices</h2>
+      <ul>
+        <li>Use airtight containers to preserve freshness.</li>
+        <li>Label containers with contents and date.</li>
+        <li>Store vegetables and fruits separately.</li>
+        <li>Keep proteins refrigerated or frozen properly.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Freezer Prep</h2>
+      <p>Batch cook proteins, sauces, and grains. Freeze in single-use portions for quick meal assembly.</p>
+    </section>
+
+    <section>
+      <h2>Prep Timeline Example</h2>
+      <p><strong>Sunday (1 hour):</strong> Chop veggies, marinate proteins, portion grains.</p>
+      <p><strong>Midweek Refresh (15 min):</strong> Check freshness, refill containers.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script>
+  <script>
+    // Load header/footer partials
+    ['header', 'footer'].forEach(part => {
+      fetch(`${part}.html`)
+        .then(resp => resp.text())
+        .then(html => {
+          const placeholder = document.getElementById(`${part}-placeholder`);
+          if(placeholder) placeholder.innerHTML = html;
+        })
+        .catch(err => console.error(`Error loading ${part}.html:`, err));
+    });
+
+    // Footer Date/Time
+    function setFooterDate() {
+      const datetime = document.getElementById('datetime');
+      if(datetime) datetime.textContent = new Date().toLocaleString();
+    }
+    document.addEventListener('DOMContentLoaded', setFooterDate);
+
+    // Mobile Nav Toggle
+    function initNavToggle() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-menu');
+      if(navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !expanded);
+          nav.classList.toggle('nav-open');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initNavToggle);
+  </script>
+
+</body>
+</html>
+

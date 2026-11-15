@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Contact</title>
+  <meta name="description" content="Contact Prep & Chef for questions, feedback, or assistance with meal planning and prep.">
+  <meta name="keywords" content="contact, meal planning support, feedback, questions">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero hero-contact">
+      <h1>Contact Prep & Chef</h1>
+      <p>Questions, feedback, or assistance — send us a message and we’ll help you make meal planning simple.</p>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm" action="mailto:contact@prepandchef.com" method="post" enctype="text/plain" novalidate>
+        <fieldset>
+          <legend>Personal Information</legend>
+          <label for="name">Full Name (required)</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+          <label for="email">Email Address (required)</label>
+          <input type="email" id="email" name="email" placeholder="email@example.com" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="555-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        </fieldset>
+
+        <fieldset>
+          <legend>Inquiry Details</legend>
+          <label for="reason">Reason for Contact</label>
+          <select id="reason" name="reason" required>
+            <option value="" disabled selected>Select a reason</option>
+            <option value="feedback">Feedback</option>
+            <option value="question">Question</option>
+            <option value="support">Support Request</option>
+          </select>
+
+          <label for="message">Message (required)</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+
+          <p>Preferred Contact Method:</p>
+          <label><input type="radio" name="contact-method" value="email" checked> Email</label>
+          <label><input type="radio" name="contact-method" value="phone"> Phone</label>
+
+          <p>Subscribe to newsletter?</p>
+          <label><input type="checkbox" name="subscribe" value="yes"> Yes, I want updates.</label>
+        </fieldset>
+
+        <button type="submit">Send Message</button>
+        <p id="formErrors" aria-live="polite" role="alert" style="color:red;margin-top:0.5em;"></p>
+      </form>
+    </section>
+  </main> <!-- Close main before footer -->
+
+  <!-- Footer Partial -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script>
+  <script>
+    // Load header/footer partials
+    ['header', 'footer'].forEach(part => {
+      fetch(`${part}.html`)
+        .then(resp => resp.text())
+        .then(html => {
+          const placeholder = document.getElementById(`${part}-placeholder`);
+          if (placeholder) placeholder.innerHTML = html;
+        })
+        .catch(err => console.error(`Error loading ${part}.html:`, err));
+    });
+
+    // Footer Date/Time
+    function setFooterDate() {
+      const datetime = document.getElementById('datetime');
+      if(datetime) datetime.textContent = new Date().toLocaleString();
+    }
+    document.addEventListener('DOMContentLoaded', setFooterDate);
+
+    // Mobile Nav Toggle
+    function initNavToggle() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-menu');
+      if(navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !expanded);
+          nav.classList.toggle('nav-open');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initNavToggle);
+
+    // Form Validation
+    const form = document.getElementById('contactForm');
+    const formErrors = document.getElementById('formErrors');
+
+    form.addEventListener('submit', function(e) {
+      const errors = [];
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+
+      if(name.value.trim() === '') errors.push('Name is required.');
+      if(email.value.trim() === '') errors.push('Email is required.');
+      if(message.value.trim() === '') errors.push('Message is required.');
+
+      if(errors.length > 0) {
+        e.preventDefault();
+        formErrors.textContent = errors.join(' ');
+        if(name.value.trim() === '') name.focus();
+        else if(email.value.trim() === '') email.focus();
+        else message.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>

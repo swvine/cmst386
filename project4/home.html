@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Home</title>
+  <meta name="description" content="Prep & Chef — Meal planning, prep, and step-by-step cooking guides.">
+  <meta name="keywords" content="meal planning, meal prep, 30-minute meals, recipes, ingredient lists">
+  <meta name="author" content="Prep & Chef">
+  <meta name="copyright" content="Prep & Chef, 2025">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+ <!-- Header -->
+<div id="header-placeholder"></div>
+  <!-- Main Content -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+      <h1>Plan • Prep • Cook — Simplify Your Meals</h1>
+      <p>Save time, reduce stress, and enjoy delicious home‑cooked meals with smart planning and organized prep.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="monthly-planner.html">Start Planning</a>
+        <a class="btn btn-secondary" href="30-min-meals.html">View 30‑Minute Meals</a>
+      </div>
+    </section>
+
+    <!-- Featured Sections -->
+    <section class="featured container">
+      <h2>Get Started Fast</h2>
+      <div class="feature-grid">
+        <article class="feature-item">
+          <i class="fas fa-calendar-check fa-2xl" aria-hidden="true"></i>
+          <h3>Monthly Planner</h3>
+          <p>Organize 30 days of meals using simple themed weekly planning.</p>
+          <a href="monthly-planner.html" class="learn-more" aria-label="Explore Monthly Planner">Explore →</a>
+        </article>
+
+        <article class="feature-item">
+          <i class="fas fa-blender fa-2xl" aria-hidden="true"></i>
+          <h3>Prep & Store</h3>
+          <p>Prep ahead with food safety guidance and storage timelines.</p>
+          <a href="prep-store.html" class="learn-more" aria-label="Learn more about Prep & Store">Learn More →</a>
+        </article>
+
+        <article class="feature-item">
+          <i class="fas fa-stopwatch fa-2xl" aria-hidden="true"></i>
+          <h3>30‑Minute Meals</h3>
+          <p>Quick and delicious recipes for busy weeknights.</p>
+          <a href="30-min-meals.html" class="learn-more" aria-label="Browse 30-Minute Meals recipes">See Recipes →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Additional Features -->
+    <section class="features container">
+      <h2>Everything You Need to Cook Better</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <i class="fa-solid fa-calendar-days fa-2xl" aria-hidden="true"></i>
+          <h3>Monthly Meal Planner</h3>
+          <p>Stay organized with flexible drag‑and‑drop planning for breakfast, lunch, and dinner.</p>
+          <a href="monthly-planner.html" class="feature-link" aria-label="Plan Your Month">Plan Your Month</a>
+        </article>
+
+        <article class="feature-card">
+          <i class="fa-solid fa-basket-shopping fa-2xl" aria-hidden="true"></i>
+          <h3>Smart Ingredient Lists</h3>
+          <p>Auto‑generated shopping lists so you only buy what you need — and waste less!</p>
+          <a href="prep-store.html" class="feature-link" aria-label="How it works for Prep & Store">How It Works</a>
+        </article>
+
+        <article class="feature-card">
+          <i class="fa-solid fa-bowl-food fa-2xl" aria-hidden="true"></i>
+          <h3>30‑Minute Meals</h3>
+          <p>Hundreds of delicious quick recipes with easy step‑by‑step instructions.</p>
+          <a href="30-min-meals.html" class="feature-link" aria-label="Browse 30-Minute Meals">Browse Recipes</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => document.getElementById(`${part}-placeholder`).innerHTML = html)
+      .then(() => {
+        if(part === 'header') initNavToggle();
+        if(part === 'footer') setFooterDate();
+      });
+  });
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+</script>
+
+</body>
+</html>

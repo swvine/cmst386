@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — How Meal Planning Works</title>
+  <meta name="description" content="Learn Prep & Chef's step-by-step meal planning process to save time, reduce stress, and eat healthier.">
+  <meta name="keywords" content="meal planning, meal prep methodology, weekly planner, monthly planning">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header-placeholder"></div>
+  
+  <!-- Main Content -->
+
+<main class="container">
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>How Meal Planning Works</h1>
+      <p>Prep & Chef's meal planning system simplifies your cooking workflow, reduces decision fatigue, and helps you eat healthy meals consistently.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="monthly-planner.html">Start Planning</a>
+        <a class="btn btn-secondary" href="30-min-meals.html">View 30‑Minute Meals</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section>
+    <h2>Step 1: Plan Wisely</h2>
+    <p>Start with our monthly meal planner. Choose meals for each week using our five core categories: Chicken, Beef, Pasta/Grain Bowls, Vegetarian/Vegan, and Soups/One-Pot Meals. Rotating categories ensures variety and easier grocery shopping.</p>
+  </section>
+
+  <section>
+    <h2>Step 2: Prep Intentionally</h2>
+    <p>Use weekly ingredient lists to organize groceries and prep ingredients ahead of time. Chop, marinate, portion, and store ingredients in labeled containers for quick access during cooking.</p>
+  </section>
+
+  <section>
+    <h2>Step 3: Cook Efficiently</h2>
+    <p>Follow step-by-step recipes designed for speed and clarity. Our 30-Minute Meals section provides additional quick options for busy days. Visual guides and tips help ensure consistent results every time.</p>
+  </section>
+
+  <section>
+    <h2>Benefits of Meal Planning</h2>
+    <ul>
+      <li>Reduce stress and decision fatigue.</li>
+      <li>Save money by reducing food waste.</li>
+      <li>Cook healthier meals with minimal effort.</li>
+      <li>Efficiently manage time in the kitchen.</li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => document.getElementById(`${part}-placeholder`).innerHTML = html)
+      .then(() => {
+        if(part === 'header') initNavToggle();
+        if(part === 'footer') setFooterDate();
+      });
+  });
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+</script>
+
+</body>
+</html>

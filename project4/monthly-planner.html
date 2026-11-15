@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Monthly Meal Planner</title>
+  <meta name="description" content="Plan your month with Prep & Chef's structured monthly meal planner, including weekly themes, prep tasks, and shopping lists.">
+  <meta name="keywords" content="monthly meal planner, meal prep, shopping list, weekly meals, recipes">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header-placeholder"></div>
+  
+<main class="container">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Monthly Meal Planner</h1>
+      <p>Our monthly meal planner helps you organize 30 days of meals using rotating weekly themes for simplified planning and shopping.</p>
+    </div>
+  </section>
+
+  <!-- Week 1 Table -->
+  <section class="weekly-planner">
+    <h2>Week 1 — Chicken Week</h2>
+    <table class="planner-table">
+      <thead>
+        <tr>
+          <th scope="col">Day</th>
+          <th scope="col">Meal</th>
+          <th scope="col">Prep Tasks</th>
+          <th scope="col">Cook Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mon</td>
+          <td>Garlic Chicken Bowls</td>
+          <td>Chop garlic, slice lemon</td>
+          <td>20 min</td>
+        </tr>
+        <tr>
+          <td>Tue</td>
+          <td>Chicken Wraps</td>
+          <td>Pre-cook chicken</td>
+          <td>10 min</td>
+        </tr>
+        <tr>
+          <td>Wed</td>
+          <td>Chicken Caesar Pasta</td>
+          <td>Prep dressing</td>
+          <td>15 min</td>
+        </tr>
+        <tr>
+          <td>Thu</td>
+          <td>Chicken Fajitas</td>
+          <td>Slice peppers</td>
+          <td>25 min</td>
+        </tr>
+        <tr>
+          <td>Fri</td>
+          <td>Leftovers</td>
+          <td>None</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Shopping Lists -->
+  <section>
+    <h2>Shopping Lists</h2>
+    <ul>
+      <li><strong>Produce:</strong> bell peppers, spinach, lemons</li>
+      <li><strong>Protein:</strong> chicken breasts, ground beef</li>
+      <li><strong>Grains:</strong> pasta, rice, wraps</li>
+      <li><strong>Dairy:</strong> parmesan, yogurt</li>
+      <li><strong>Pantry:</strong> olive oil, salt, garlic powder</li>
+    </ul>
+  </section>
+
+  <!-- Prep Timeline -->
+  <section>
+    <h2>Prep Timeline</h2>
+    <p><strong>Sunday (45 min):</strong> Chop vegetables, portion grains, marinate proteins, pre-cook bulk items.</p>
+    <p><strong>Midweek Check (20 min):</strong> Refresh produce, refill containers.</p>
+  </section>
+
+  <!-- Downloadable Templates -->
+  <section>
+    <h2>Downloadable Templates</h2>
+    <ul>
+      <li><a href="#" onclick="alert('This download is a demonstration created for a web design course. The downloadable file was not included in the original assignment. No file has been downloaded.'); return false;">Monthly Planner PDF</a></li>
+      <li><a href="#" onclick="alert('This download is a demonstration created for a web design course. The downloadable file was not included in the original assignment. No file has been downloaded.'); return false;">Weekly Ingredient List</a></li>
+      <li><a href="#" onclick="alert('This download is a demonstration created for a web design course. The downloadable file was not included in the original assignment. No file has been downloaded.'); return false;">Prep Timeline Chart</a></li>
+      <li><a href="#" onclick="alert('This download is a demonstration created for a web design course. The downloadable file was not included in the original assignment. No file has been downloaded.'); return false;">30-Minute Meals Quick List</a></li>
+    </ul>
+  </section>
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => {
+        const placeholder = document.getElementById(`${part}-placeholder`);
+        if(placeholder) placeholder.innerHTML = html;
+      })
+      .catch(err => console.error(`Error loading ${part}.html:`, err));
+  });
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+  document.addEventListener('DOMContentLoaded', setFooterDate);
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', initNavToggle);
+</script>
+
+</body>
+</html>

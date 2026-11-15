@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — About the Founder</title>
+  <meta name="description" content="Learn about Prep & Chef, founder Jordan Ellis, and the mission to simplify meal planning and cooking.">
+  <meta name="keywords" content="Prep & Chef, Jordan Ellis, meal planning, cooking guidance, founder">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header-placeholder"></div>
+  
+<!-- Main Content -->
+<main class="container">
+  <!-- Hero Section -->
+  <section class="hero hero-about">
+    <h1>About Prep & Chef</h1>
+    <p>Helping busy people plan, prep, and cook healthy meals without stress. Meet our founder, Jordan Ellis, and learn how Prep & Chef started.</p>
+  </section>
+
+  <!-- Founder Bio Section -->
+  <section class="founder-bio container">
+    <div class="bio-wrapper">
+      <div class="bio-image">
+        <img src="imgs/prep.jpg" alt="Jordan Ellis, founder of Prep & Chef" loading="lazy">
+      </div>
+      <div class="bio-content">
+        <h2>Jordan Ellis</h2>
+        <p><strong>Founder & Meal Planning Consultant</strong> — A New Orleans native, Jordan grew up surrounded by vibrant culinary traditions. Inspired by her family’s recipes and busy restaurant work, she developed a passion for simplifying meal planning and helping others enjoy home-cooked meals stress-free.</p>
+        <p>Jordan started Prep & Chef to create practical tools for busy professionals and families: organized ingredient lists, prep-and-store guides, step-by-step recipes, and quick 30-minute meals. Her mission is to make cooking accessible, efficient, and enjoyable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Goals Section -->
+  <section class="client-goals container">
+    <h2>Our Mission & Goals</h2>
+    <ul>
+      <li>Provide an easy-to-use, visually clean website for meal planning and recipes.</li>
+      <li>Offer step-by-step cooking guides, ingredient lists, and prep templates.</li>
+      <li>Create a dedicated section for quick, healthy 30-minute meals.</li>
+      <li>Empower users to cook efficiently and eat well, even on a busy schedule.</li>
+    </ul>
+  </section>
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- Scripts -->
+<script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => document.getElementById(`${part}-placeholder`).innerHTML = html)
+      .then(() => {
+        if(part === 'header') initNavToggle();
+        if(part === 'footer') setFooterDate();
+      });
+  });
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+</script>
+
+</body>
+</html>
+
+

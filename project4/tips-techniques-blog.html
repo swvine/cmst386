@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Tips & Techniques Blog</title>
+  <meta name="description" content="Meal prep tips, cooking techniques, and blog-style articles to improve kitchen efficiency.">
+  <meta name="keywords" content="meal prep tips, cooking techniques, kitchen hacks, blog">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- Header -->
+<div id="header-placeholder"></div>
+  
+<main class="container">
+  <h1>Tips & Techniques</h1>
+
+  <article class="blog-post">
+    <h2>5 Time-Saving Meal Prep Hacks</h2>
+    <p>Discover simple ways to chop, marinate, and portion ingredients efficiently to save hours during the week.</p>
+    <a href="#">Read More</a>
+  </article>
+
+  <article class="blog-post">
+    <h2>How to Store Fresh Produce for Maximum Shelf Life</h2>
+    <p>Learn which containers and methods keep your fruits and vegetables fresh longer.</p>
+    <a href="#">Read More</a>
+  </article>
+
+  <article class="blog-post">
+    <h2>Beginner-Friendly Knife Skills</h2>
+    <p>Master basic knife techniques for safer, faster, and more consistent prep work.</p>
+    <a href="#">Read More</a>
+  </article>
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- Scripts -->
+<script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials safely
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => {
+        const placeholder = document.getElementById(`${part}-placeholder`);
+        if(placeholder) placeholder.innerHTML = html;
+      })
+      .catch(err => console.error(`Error loading ${part}.html:`, err));
+  });
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', initNavToggle);
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+  document.addEventListener('DOMContentLoaded', setFooterDate);
+</script>
+
+</body>
+</html>
+

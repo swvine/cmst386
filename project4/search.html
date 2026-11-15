@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Search</title>
+  <meta name="description" content="Search Prep & Chef for meal plans, recipes, and tips.">
+  <meta name="keywords" content="search, recipes, meal planning, tips">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="canonical" href="https://www.prepandchef.com/search.html">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+<!-- Header -->
+<div id="header-placeholder"></div>
+  
+<main class="container">
+  <h1>Search Prep & Chef</h1>
+  <p>Find recipes, meal plans, or prep tips using our search function.</p>
+
+  <!-- Internal Search -->
+  <form id="internal-search" role="search" aria-label="Search our content">
+    <label for="internal-search-box" class="sr-only">Search site content</label>
+    <div class="search-wrapper">
+      <input type="search" id="internal-search-box" name="search" placeholder="Search recipes, planners, tips..." autocomplete="on">
+      <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+    </div>
+  </form>
+
+  <ul id="search-results" class="results-list" aria-live="polite"></ul>
+
+  <p class="fallback-search">Not finding what you need? Try a wider internet search:</p>
+
+  <!-- DuckDuckGo Backup Search Box -->
+  <form method="get" action="https://duckduckgo.com/" target="_blank">
+    <label for="ddg-search" class="sr-only">Search DuckDuckGo</label>
+    <input type="hidden" name="sites" value="prepandchef.com">
+    <input type="text" id="ddg-search" name="q" placeholder="DuckDuckGo Search...">
+    <button type="submit" class="btn btn-primary">Search Web</button>
+  </form>
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials safely
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => {
+        const placeholder = document.getElementById(`${part}-placeholder`);
+        if(placeholder) placeholder.innerHTML = html;
+      })
+      .catch(err => console.error(`Error loading ${part}.html:`, err));
+  });
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', initNavToggle);
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+  document.addEventListener('DOMContentLoaded', setFooterDate);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Recipes</title>
+  <meta name="description" content="Step-by-step beginner and intermediate recipes with ingredient lists and cooking instructions.">
+  <meta name="keywords" content="recipes, meal prep, step-by-step, beginner recipes, intermediate recipes">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header-placeholder"></div>
+  
+<main class="container">
+
+  <h1>Step-by-Step Recipes</h1>
+
+  <section class="recipe">
+    <h2>Garlic Chicken Meal Prep (Beginner)</h2>
+    <div class="recipe-grid">
+      <div class="ingredients">
+        <h3>Ingredients</h3>
+        <ul>
+          <li>Chicken breasts</li>
+          <li>Olive oil</li>
+          <li>Garlic cloves</li>
+          <li>Lemon</li>
+          <li>Salt & pepper</li>
+        </ul>
+      </div>
+      <div class="steps">
+        <h3>Steps</h3>
+        <ol>
+          <li>Preheat oven to 400°F (200°C).</li>
+          <li>Mix olive oil, minced garlic, lemon juice, salt, and pepper.</li>
+          <li>Marinate chicken in mixture for 15 minutes.</li>
+          <li>Bake chicken for 20 minutes until cooked through.</li>
+          <li>Slice and portion into containers for meal prep.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <hr class="recipe-separator">
+
+  <section class="recipe">
+    <h2>Pesto Pasta with Veggies (Intermediate)</h2>
+    <div class="recipe-grid">
+      <div class="ingredients">
+        <h3>Ingredients</h3>
+        <ul>
+          <li>Pasta of choice</li>
+          <li>Pesto sauce</li>
+          <li>Zucchini</li>
+          <li>Cherry tomatoes</li>
+          <li>Parmesan cheese</li>
+        </ul>
+      </div>
+      <div class="steps">
+        <h3>Steps</h3>
+        <ol>
+          <li>Cook pasta according to package directions.</li>
+          <li>Sauté zucchini and cherry tomatoes in olive oil for 5 minutes.</li>
+          <li>Toss cooked pasta with veggies and pesto sauce.</li>
+          <li>Serve topped with grated Parmesan cheese.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script src="js/scripts.js"></script>
+<script>
+  // Load header/footer partials safely
+  ['header', 'footer'].forEach(part => {
+    fetch(`${part}.html`)
+      .then(resp => resp.text())
+      .then(html => {
+        const placeholder = document.getElementById(`${part}-placeholder`);
+        if(placeholder) placeholder.innerHTML = html;
+      })
+      .catch(err => console.error(`Error loading ${part}.html:`, err));
+  });
+
+  // Mobile Nav Toggle
+  function initNavToggle() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-menu');
+    if(navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('nav-open');
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', initNavToggle);
+
+  // Footer datetime
+  function setFooterDate() {
+    const datetime = document.getElementById('datetime');
+    if(datetime) datetime.textContent = new Date().toLocaleString();
+  }
+  document.addEventListener('DOMContentLoaded', setFooterDate);
+</script>
+
+</body>
+</html>

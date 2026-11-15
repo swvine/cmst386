@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prep & Chef — Privacy Policy</title>
+  <meta name="description" content="Prep & Chef Privacy Policy including collection, use, and protection of personal information.">
+  <meta name="keywords" content="privacy policy, personal information, data usage, cookies">
+  <meta name="author" content="Prep & Chef">
+  <link rel="icon" href="favicon_io/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Main Content -->
+  <main class="container">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: December 04, 2025</p>
+
+    <section>
+      <h2>Collection of Personally Identifiable Information (PII)</h2>
+      <p>We collect information such as name, email address, and optional phone number when users submit forms on our website.</p>
+    </section>
+
+    <section>
+      <h2>Usage of Information</h2>
+      <p>Information collected is used solely to respond to inquiries, provide services, and improve our website experience.</p>
+    </section>
+
+    <section>
+      <h2>Cookie Policy</h2>
+      <p>Our site uses cookies for basic site functionality and analytics. No personal data is stored in cookies.</p>
+    </section>
+
+    <section>
+      <h2>Third-Party Information Sharing</h2>
+      <p>We do not sell or share personal information with third parties except for service providers who support website functionality.</p>
+    </section>
+
+    <section>
+      <h2>Website Usage</h2>
+      <p>By using Prep & Chef services and visiting our website (<a href="http://www.prep-n-chef.com" target="_blank" rel="noopener noreferrer">prep-n-chef.com</a>), you agree to this Privacy Policy.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script>
+  <script>
+    // Load header/footer partials safely
+    ['header', 'footer'].forEach(part => {
+      fetch(`${part}.html`)
+        .then(resp => resp.text())
+        .then(html => {
+          const placeholder = document.getElementById(`${part}-placeholder`);
+          if(placeholder) placeholder.innerHTML = html;
+        })
+        .catch(err => console.error(`Error loading ${part}.html:`, err));
+    });
+
+    // Footer datetime
+    function setFooterDate() {
+      const datetime = document.getElementById('datetime');
+      if(datetime) datetime.textContent = new Date().toLocaleString();
+    }
+    document.addEventListener('DOMContentLoaded', setFooterDate);
+
+    // Mobile Nav Toggle
+    function initNavToggle() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-menu');
+      if(navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !expanded);
+          nav.classList.toggle('nav-open');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initNavToggle);
+  </script>
+
+</body>
+</html>
+
